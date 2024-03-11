@@ -15,24 +15,44 @@ $(function () {
       localStorage.setItem(timeBlock, userInput);
 
     });
-    //
-    // TODO: Add code to apply the past, present, or future class to each time
-    // block by comparing the id to the current hour. HINTS: How can the id
-    // attribute of each time-block be used to conditionally add or remove the
-    // past, present, and future classes? How can Day.js be used to get the
-    // current hour in 24-hour time?
     
+    //This function takes the classes of time-block and loops through each of them and applies 
+    //the code inside the function.
     $('.time-block').each(function() {
 
+      //This takes the string ID associted with each time div and makes the second part after the 
+      //hyphon a integer to be set to time.
+      var time = parseInt($(this).attr('id').split('-')[1]);
+
+      //This sets the current hour to the variable of currentTime.
       var currentTime = dayjs().hour();
+
+      console.log("ID:", $(this).attr('id'));
+      console.log("Time:", time);
+      console.log("Current Time:", currentTime);
+      //This if/else if statement compares the current time to the time of each time-block and 
+      //sets either past, present or future css classes to determine the color of each section.
+      if (time < currentTime) {
+        console.log("Past");
+        $(this).addClass('past');
+      } else if (time === currentTime){
+        console.log("Present");
+        $(this).addClass('present');
+      } else {
+        console.log("Future");
+        $(this).addClass('future');
+      }
 
     });
 
-    // TODO: Add code to get any user input that was saved in localStorage and set
-    // the values of the corresponding textarea elements. HINT: How can the id
-    // attribute of each time-block be used to do this?
-    
+    //This function gets the userInput that is saved in the local storage.
+    $('.time-block').each(function() {
+      var timeBlock = $(this).attr('id');
+      var savedInput = localStorage.getItem(timeBlock);
 
+      // Set the textarea value with the stored input
+      $(this).find('.description').val(savedInput);
+  });
 
     //This code is used to display the current date in the header of the page.
       var currentDate = dayjs().format('dddd, MMMM D');
