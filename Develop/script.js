@@ -27,19 +27,13 @@ $(function () {
       //This sets the current hour to the variable of currentTime.
       var currentTime = dayjs().hour();
 
-      console.log("ID:", $(this).attr('id'));
-      console.log("Time:", time);
-      console.log("Current Time:", currentTime);
       //This if/else if statement compares the current time to the time of each time-block and 
       //sets either past, present or future css classes to determine the color of each section.
       if (time < currentTime) {
-        console.log("Past");
         $(this).addClass('past');
       } else if (time === currentTime){
-        console.log("Present");
         $(this).addClass('present');
       } else {
-        console.log("Future");
         $(this).addClass('future');
       }
 

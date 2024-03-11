@@ -20,6 +20,10 @@ body {
     border-radius: 15px;
   }
   
+  .hidden{
+    display: none;
+  }
+
   .row {
     border-top: 1px solid white;
   }
