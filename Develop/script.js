@@ -1,3 +1,5 @@
+//Initilizes a variable to be used in the save button function
+var removeHidden= $(".saveChanges");
 //This makes sure the code is not executed until after the DOM has fully loaded.
 $(function () {
 
@@ -13,6 +15,16 @@ $(function () {
       //This saves the userInput that is retrieved above in the local storage with the key being 
       //the ID retrived in the timeBlock var.
       localStorage.setItem(timeBlock, userInput);
+
+      if (userInput !== ""){
+        
+      removeHidden.removeClass("hidden");
+
+      var displayInterval = setInterval(function () {
+        removeHidden.addClass("hidden");
+        clearInterval(displayInterval);
+      }, 2000);
+    }
 
     });
     
