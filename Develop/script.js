@@ -16,8 +16,10 @@ $(function () {
       //the ID retrived in the timeBlock var.
       localStorage.setItem(timeBlock, userInput);
 
+      //This displays the message hidden in the html for 2 seconds if when the save button is clicked
+      //the string in userInput is not empty.
       if (userInput !== ""){
-        
+
       removeHidden.removeClass("hidden");
 
       var displayInterval = setInterval(function () {
